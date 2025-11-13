@@ -77,6 +77,7 @@ module.exports = (env, argv) => {
             open: true,
             compress: true,
             hot: true,
+            liveReload: false,
             watchFiles: ["src/**/*.html", "src/assets/**/*.*", "src/js/**/*.js"],
             historyApiFallback: false, // ❗ дозволяє звертатися до /modules.html напряму
         },
