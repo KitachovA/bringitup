@@ -1,9 +1,8 @@
-export default class Slider {
-    constructor(page, btns) {
-        this.page = document.querySelector(page);
-        this.slides = [...this.page.children];
-        this.btns = document.querySelectorAll(btns);
-        this.slidesIndex = 1;
+import Slider from "./slider";
+
+export default class MainSlider extends Slider {
+    constructor(btns) {
+        super(btns)
     }
 
     showSlides(n) {
@@ -15,9 +14,9 @@ export default class Slider {
             this.slidesIndex = this.slides.length
         }
 
-        this.slides.forEach(slide => {
+        for (let slide of this.slides) {
             slide.style.display = 'none'
-        })
+        }
 
         this.slides[this.slidesIndex - 1].style.display = 'block'
 
