@@ -1,11 +1,13 @@
 export default class Difference {
     constructor(officerOld, officerNew, items) {
-        this.officerOld = document.querySelector(officerOld);
-        this.officerNew = document.querySelector(officerNew);
-        this.oldItems = this.officerOld.querySelectorAll(items);
-        this.newItems = this.officerNew.querySelectorAll(items);
-        this.oldCounter = 0;
-        this.newCounter = 0
+        try {
+            this.officerOld = document.querySelector(officerOld);
+            this.officerNew = document.querySelector(officerNew);
+            this.oldItems = this.officerOld.querySelectorAll(items);
+            this.newItems = this.officerNew.querySelectorAll(items);
+            this.oldCounter = 0;
+            this.newCounter = 0
+        } catch (e) { }
     }
 
     hideItems(itemsChoice) {
@@ -34,9 +36,11 @@ export default class Difference {
     }
 
     init() {
-        this.hideItems(this.oldItems)
-        this.hideItems(this.newItems)
-        this.showCards(this.officerOld, this.oldCounter, this.oldItems)
-        this.showCards(this.officerNew, this.newCounter, this.newItems)
+        try {
+            this.hideItems(this.oldItems)
+            this.hideItems(this.newItems)
+            this.showCards(this.officerOld, this.oldCounter, this.oldItems)
+            this.showCards(this.officerNew, this.newCounter, this.newItems)
+        } catch (e) { }
     }
 }

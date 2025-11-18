@@ -56,41 +56,45 @@ export default class MiniSlider extends Slider {
 
     init() {
 
-        this.container.style = `
+        try {
+            this.container.style = `
             display: flex;
             overflow: hidden;
             flex-wrap: wrap;
             align-items: flex-start;
      `
-        this.bindTrigger()
-        this.decorizeSlide()
-        this.activateAnimation()
+            this.bindTrigger()
+            this.decorizeSlide()
 
-        if (this.autoplay) {
-            this.container.addEventListener('mouseenter', () => {
-                clearInterval(this.paused)
-            })
 
-            this.next.addEventListener('mouseenter', () => {
-                clearInterval(this.paused)
-            })
 
-            this.prev.addEventListener('mouseenter', () => {
-                clearInterval(this.paused)
-            })
+            if (this.autoplay) {
+                this.activateAnimation()
+                this.container.addEventListener('mouseenter', () => {
+                    clearInterval(this.paused)
+                })
 
-            this.container.addEventListener('mouseleave', () => {
-                this.activateAnimation();
-            })
+                this.next.addEventListener('mouseenter', () => {
+                    clearInterval(this.paused)
+                })
 
-            this.next.addEventListener('mouseleave', () => {
-                this.activateAnimation();
-            })
+                this.prev.addEventListener('mouseenter', () => {
+                    clearInterval(this.paused)
+                })
 
-            this.prev.addEventListener('mouseleave', () => {
-                this.activateAnimation();
-            })
-        }
+                this.container.addEventListener('mouseleave', () => {
+                    this.activateAnimation();
+                })
+
+                this.next.addEventListener('mouseleave', () => {
+                    this.activateAnimation();
+                })
+
+                this.prev.addEventListener('mouseleave', () => {
+                    this.activateAnimation();
+                })
+            }
+        } catch (e) { }
 
     }
 }
